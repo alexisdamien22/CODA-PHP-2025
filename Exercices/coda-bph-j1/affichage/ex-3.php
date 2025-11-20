@@ -28,16 +28,11 @@
             <?php
             while($i < count($users))
             {
-                foreach($users[$i] as $key => $value)
-                {
-                    $temp[$j]=$value;
-                    $j++;
-                }?>
-                <li><?= "$temp[0] $temp[1]" ?></li>
-                <?php
-                $temp = ["",""];
-                $j = 0;
-                $i++;
+                $firstName = $users[$i]["firstName"];
+                $lastName = $users[$i]["lastName"];
+                $i++;?>
+                <li><?= "$firstName $lastName" ?></li>
+            <?php
             }?>
         </ul>
     </body>
