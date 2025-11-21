@@ -1,0 +1,8 @@
+<?php
+
+$siteTitle = "";
+$pageTitle = "";
+$pageContent = "";
+
+
+?>
