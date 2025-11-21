@@ -43,8 +43,8 @@ $color = $_GET["color"];
                 {
                     echo'<li>';
                     echo $users[$i]["name"];
+                    echo'</li>';
                 }
-                echo"</li>";
                 $i++;
             }?>
         </ul>
