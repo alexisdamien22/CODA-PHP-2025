@@ -33,4 +33,4 @@ WHERE username = "Spiderman";
 
 EXERCICE 5:
 
-1. DELETE * FROM users WHERE username="Batman";
+1. DELETE FROM users WHERE username="Batman";
