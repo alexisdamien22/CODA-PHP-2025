@@ -7,7 +7,19 @@
     </head>
     <body>
         <?php require "templates/partials/_header.phtml"; ?>
-        <?php require "templates/partials/_homepage.phtml"; ?>
+        <?php
+        if($template==="about")
+        {
+            require "templates/partials/_about.phtml";
+        }
+        elseif($template==="contact")
+        {
+            require "templates/partials/_contact.phtml";
+        }
+        else
+        {
+            require "templates/partials/_homepage.phtml";
+        } ?>
         <?php require "templates/partials/_footer.phtml"; ?>
     </body>
 </html>
