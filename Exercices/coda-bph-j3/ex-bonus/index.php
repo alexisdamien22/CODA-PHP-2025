@@ -21,6 +21,7 @@ function routing() : string
         return "homepage";
     }
 }
+$template=routing();
 require "templates/layout.phtml";
 
 ?>
