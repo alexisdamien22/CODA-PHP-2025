@@ -1,0 +1,46 @@
+CREATE DATABASE ex_PHPMyAdmin;
+
+CREATE TABLE Posts (
+  id int auto_increment primary key,
+  title varchar(255),
+  content varchar(2047),
+  published_at datetime,
+  author int
+);
+
+CREATE TABLE Users (
+  id int auto_increment primary key,
+  email varchar(255),
+  password varchar(255),
+  created_at datetime
+);
+
+CREATE TABLE PostsCategories (
+  post_id int,
+  category_id int
+);
+
+CREATE TABLE Categories (
+  id int auto_increment primary key,
+  name varchar(255),
+  description varchar(1023),
+  parent_id int
+);
+
+ALTER TABLE Posts
+ADD CONSTRAINT fk_posts_author
+FOREIGN KEY (author) REFERENCES Users(id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE PostsCategories
+ADD CONSTRAINT fk_postscategories_post
+FOREIGN KEY (post_id) REFERENCES Posts(id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+ALTER TABLE PostsCategories
+ADD CONSTRAINT fk_postscategories_category
+FOREIGN KEY (category_id) REFERENCES Categories(id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;

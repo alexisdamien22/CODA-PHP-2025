@@ -1,0 +1,36 @@
+EXERCICE 1:
+
+1. SELECT DISTINCT * FROM users;
+
+2. SELECT * FROM users WHERE id=3;
+
+3. SELECT username FROM users WHERE id=2;
+
+4. SELECT * FROM users ORDER BY id DESC;
+
+5. SELECT * FROM users ORDER BY id DESC LIMIT 3;
+
+EXERCICE 2:
+
+1. INSERT INTO users (username, email, job) VALUES
+    ("Spiderman", "peter.parker@daily-bugle.com", "1");
+
+2. INSERT INTO jobs (name) VALUE ("Lycéen");
+
+EXERCICE 3:
+
+1. SELECT email, jobs.name FROM users JOIN jobs ON users.job = jobs.id WHERE users.username = "Spiderman";
+
+2. SELECT username, email, jobs.name FROM users JOIN jobs ON users.job = jobs.id;
+
+3. SELECT email FROM users JOIN jobs ON users.job = jobs.id WHERE jobs.name = "Journaliste";
+
+EXERCICE 4:
+
+1.UPDATE users
+SET job = 5
+WHERE username = "Spiderman";
+
+EXERCICE 5:
+
+1. DELETE * FROM users WHERE username="Batman";
