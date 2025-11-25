@@ -9,5 +9,5 @@ $parameters = [
 ];
 $query->execute($parameters);
 $id = $db->lastInsertId();
-header('Location: '. 'http://localhost/Exercices/coda-bph-j4/mini-projet-crud/controllers/index.php');
+header('Location: ../index.php');
 ?>
