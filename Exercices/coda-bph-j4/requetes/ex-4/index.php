@@ -13,12 +13,9 @@ $db = new PDO(
     $password
 );
 
-$query = $db->prepare("INSERT INTO users (id, username, email, job) VALUES (NULL, :name, :email, :job)");
-
+$query = $db->prepare("UPDATE users SET job =:job WHERE username = 'Spiderman'");
 $parameters = [
-    'name' => 'Batman',
-    'email' => 'bruce@wayne.com',
-    'job' => '3'
+    'job' => '1'
 ];
 $query->execute($parameters);
 $id = $db->lastInsertId();
