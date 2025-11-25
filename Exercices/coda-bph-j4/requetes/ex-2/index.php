@@ -13,7 +13,7 @@ $db = new PDO(
     $password
 );
 
-$query = $db->prepare('SELECT * FROM users');
+$query = $db->prepare('SELECT * FROM users ORDER BY id DESC LIMIT 1');
 $query->execute();
-$user = $query->fetchall(PDO::FETCH_ASSOC);
+$user = $query->fetch(PDO::FETCH_ASSOC);
 var_dump($user);
