@@ -16,9 +16,9 @@ require "controllers/get-all-users.php";
         <tbody>
             <?php foreach ($users as $i => $user): ?>
                 <tr>
-                    <td><?= htmlspecialchars($user['id']) ?></td>
-                    <td><?= htmlspecialchars($user['username']) ?></td>
-                    <td><?= htmlspecialchars($user['email']) ?></td>
+                    <td><?= $user['id'] ?></td>
+                    <td><?= $user['username'] ?></td>
+                    <td><?= $user['email'] ?></td>
                     <td>
                         <a class="btn btn-info mx-1" href="index.php?route=show&user=<?= $user['id'] ?>"><span class="bi bi-eye"></span></a>
                         <a class="btn btn-success mx-1" href="index.php?route=update&user=<?= $user['id'] ?>"><span class="bi bi-pencil"></span></a>
