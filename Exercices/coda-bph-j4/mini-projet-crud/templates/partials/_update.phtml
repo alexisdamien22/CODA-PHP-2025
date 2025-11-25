@@ -4,10 +4,10 @@ require "controllers/get-user.php";
 <main class="container py-5">
     <a href="index.php?route=list">Retour à la liste</a>
     <h1 class="my-5">Modifier un utilisateur</h1>
-    <form method="post" action="">
+    <form method="post" action="controllers/update-user.php?user_id=<?= $user['id'] ?>">
         <fieldset class="form-group mb-2">
             <label class="form-label" for="user-id">Id de l'utilisateur</label>
-            <input class="form-control" type="text" name="user-id" id="user-id" value="<?= $user['id'] ?>" readonly disabled required>
+            <input class="form-control" type="text" name="user_id" id="user_id" value="<?= $user['id'] ?>" readonly disabled required>
         </fieldset>
         <fieldset class="form-group mb-2">
             <label class="form-label" for="name">Nom de l'utilisateur</label>
