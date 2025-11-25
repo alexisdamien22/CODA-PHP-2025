@@ -1,23 +1,26 @@
+<?php
+require "controllers/get-user.php";
+?>
 <main class="container py-5">
     <a href="index.php?route=list">Retour à la liste</a>
     <h1 class="my-5">Modifier un utilisateur</h1>
     <form method="post" action="">
         <fieldset class="form-group mb-2">
-            <label class="form-label" for="user-id">Id</label>
-            <input class="form-control" type="text" name="user-id" id="user-id" value="Id de l'utilisateur" readonly disabled required>
+            <label class="form-label" for="user-id">Id de l'utilisateur</label>
+            <input class="form-control" type="text" name="user-id" id="user-id" value="<?= $user['id'] ?>" readonly disabled required>
         </fieldset>
         <fieldset class="form-group mb-2">
-            <label class="form-label" for="name">Nom</label>
-            <input class="form-control" type="text" name="name" id="name" value="Nom de l'utilisateur" required>
+            <label class="form-label" for="name">Nom de l'utilisateur</label>
+            <input class="form-control" type="text" name="name" id="name" value="<?= $user['username'] ?>" required>
         </fieldset>
         <fieldset class="form-group mb-2">
-            <label class="form-label" for="email">Email</label>
-            <input class="form-control" type="email" name="email" id="email" value="Email de l'utilisateur" required>
+            <label class="form-label" for="email">Email de l'utilisateur</label>
+            <input class="form-control" type="email" name="email" id="email" value="<?= $user['email'] ?>" required>
         </fieldset>
         <fieldset class="form-group mb-5">
-            <label class="form-label" for="job">Emploi</label>
+            <label class="form-label" for="job">Sélectionnez l'emploi</label>
             <select class="form-select" id="job" name="job">
-                <option selected>Sélectionnez l'emploi</option>
+                <option selected><?= $user['job'] ?></option>
                 <option value="1">Journaliste</option>
                 <option value="2">Conservatrice de musée</option>
                 <option value="3">Riche</option>
