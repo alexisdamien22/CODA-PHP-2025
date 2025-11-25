@@ -17,3 +17,4 @@ $query = $db->prepare('SELECT * FROM users');
 $query->execute();
 $user = $query->fetchall(PDO::FETCH_ASSOC);
 var_dump($user);
+?>

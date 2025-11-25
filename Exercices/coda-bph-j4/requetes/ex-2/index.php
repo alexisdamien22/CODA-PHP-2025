@@ -17,3 +17,4 @@ $query = $db->prepare('SELECT * FROM users ORDER BY id DESC LIMIT 1');
 $query->execute();
 $user = $query->fetch(PDO::FETCH_ASSOC);
 var_dump($user);
+?>
