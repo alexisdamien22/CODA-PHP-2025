@@ -37,5 +37,10 @@ class Character {
     {
         $this->lastName = $lastName;
     }
+
+    public function getFullName() : string
+    {
+        return "{$this->firstName} {$this->lastName}";
+    }
 }
 ?>
