@@ -6,9 +6,6 @@ $time = [$admin, $user];
 $i = 0;
 while($i < count($time))
 {
-    $id = $time[$i]->getId();
-    $username = $time[$i]->getUsername();
-    $password = $time[$i]->getPassword();
-    echo "Bonjour je suis $username, Mon mot de passe est $password et mon id est $id.<br>";
+    echo "Bonjour je suis {$time[$i]->getUsername()}, Mon mot de passe est {$time[$i]->getPassword()} et mon id est {$time[$i]->getId()}.<br>";
     $i++;
 }
