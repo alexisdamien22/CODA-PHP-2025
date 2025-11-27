@@ -1,0 +1,2 @@
+classe Personnage qui a comme attributs un nom et un nombre de points de vie
+et a comme méthodes un getter et un setter pour chaque attributs.
