@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YEPIFY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Inter pour le texte, Space Grotesk pour les titres -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles/css/style.css" />
+</head>
+<body>
+  <?php require "templates/header.phtml"; ?>
+
+  <main class="hero">
+    <section class="hero-copy">
+      <h1 class="hero-title">YEPIFY</h1>
+      <p class="hero-subtitle">Les meilleurs Yep, partout, tout le temps.</p>
+    </section>
+
+    <aside class="player-card" aria-label="Lecteur de musique">
+      <header class="player-header">
+        <div class="playlist-meta">
+          <h2 class="playlist-title">I'm feeling Yep</h2>
+          <p class="playlist-author">par Yeppy Yeah</p>
+        </div>
+        <button class="btn btn-primary">Lecteur web</button>
+      </header>
+
+      <ul class="tracklist" role="list">
+        <!-- Piste en cours -->
+        <li class="track is-current">
+          <div class="track-left">
+            <img class="track-art" src="https://images.unsplash.com/photo-1532697382972-1753bf3fb6f5?q=80&w=120&auto=format&fit=crop" alt="Illustration de piste" />
+            <div class="track-info">
+              <span class="track-title">Yeppin' on a prayer</span>
+              <span class="track-artist">Yeppy Yeah</span>
+            </div>
+          </div>
+          <button class="icon-btn" aria-label="Lire la piste">
+            <!-- Icône play (triangle) -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7-11-7z"></path>
+            </svg>
+          </button>
+        </li>
+
+        <!-- Autres pistes -->
+        <li class="track">
+          <span class="track-title">Yep it be</span>
+          <button class="icon-btn" aria-label="Lire la piste">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7-11-7z"></path>
+            </svg>
+          </button>
+        </li>
+        <li class="track">
+          <span class="track-title">Yeppin on the dock of the bay</span>
+          <button class="icon-btn" aria-label="Lire la piste">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7-11-7z"></path>
+            </svg>
+          </button>
+        </li>
+        <li class="track">
+          <span class="track-title">Because the yep</span>
+          <button class="icon-btn" aria-label="Lire la piste">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7-11-7z"></path>
+            </svg>
+          </button>
+        </li>
+        <li class="track">
+          <span class="track-title">Leaving Las Yepas</span>
+          <button class="icon-btn" aria-label="Lire la piste">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7-11-7z"></path>
+            </svg>
+          </button>
+        </li>
+        <li class="track">
+          <span class="track-title">Enter Yepman</span>
+          <button class="icon-btn" aria-label="Lire la piste">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7-11-7z"></path>
+            </svg>
+          </button>
+        </li>
+        <li class="track">
+          <span class="track-title">Fear of the yep</span>
+          <button class="icon-btn" aria-label="Lire la piste">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M8 5v14l11-7-11-7z"></path>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </aside>
+  </main>
+</body>
+</html>

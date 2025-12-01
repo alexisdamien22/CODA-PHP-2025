@@ -1,0 +1,2 @@
+/ PageController:home
+/nos-tarifs PageController:tarifs
