@@ -1,5 +1,4 @@
 <?php
-require "controllers/AbstractController.php";
 class BlogController extends AbstractController
 {
     public function index() : void

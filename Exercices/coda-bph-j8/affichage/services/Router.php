@@ -8,8 +8,8 @@ class Router
         if(isset($get['path']))
         {
             $url = explode("/", $get['path']);
-            $id = $url[2];
-            $path = $url[1];
+            $id = $url[1];
+            $path = $url[0];
             if($get['path'] === null)
             {
                 $ctrl->index();
