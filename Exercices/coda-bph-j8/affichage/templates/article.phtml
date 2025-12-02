@@ -1,0 +1,9 @@
+<?php require "data/data-articles.php";
+$url = explode("/", $get['path']);
+$article = $url[2]; ?>
+<main id="article">
+    <h2>
+        <?=$articles[$article]["titre"]?>
+    </h2>
+    <?=$articles[$article]["contenu"]?>
+</main>

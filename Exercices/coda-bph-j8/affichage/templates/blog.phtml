@@ -1,0 +1,20 @@
+<?php require "data/data-articles.php" ?>
+<main id="blog">
+    <ul>
+        <?php foreach ($articles as $key => $article): ?>
+        <li>
+            <article>
+                <header>
+                    <h2><?= $article["titre"] ?></h2>
+                </header>
+                <section>
+                    <p><?= $article["resume"] ?></p>
+                </section>
+                <footer>
+                    <a href="./articles/<?= $key ?>">Lire l'article complet</a>
+                </footer>
+            </article>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</main>
