@@ -22,21 +22,54 @@
 
 header {
     background-color: var(--dark-blue);
+    width: 100%;
 }
 
 footer {
     background-color: var(--dark-blue);
 }
 
-.acceuil {
-    background-image: url("images/cemetery.jpeg");
-    background: var(--background-gradient);
-    background-size: 100%;
-    border-image-width: 100%; 
+.accueil {
+    width: 100vw;
+    min-height: 100%;
+    background-image: var(--background-gradient), url("../images/cemetery.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 50px 0%;
+}
+
+.acceuil img {
+    height : 30px;
+    aspect-ratio : 1/1;
 }
 
 .services {
     background: var(--background-gradient2);
+}
+
+.services ul {
+    row-gap: 20px;
+    column-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+.services li {
+    min-width: 300px;
+    max-width: 360px;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 10px 0px;
 }
 
 .tarifs {
