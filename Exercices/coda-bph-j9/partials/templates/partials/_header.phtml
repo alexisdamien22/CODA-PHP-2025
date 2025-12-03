@@ -1,0 +1,11 @@
+<header>
+    <img src="<?= $data["logo"]?>">
+    <h2><?= $data["name"]?></h2>
+    <ul>
+        <?php foreach($data["links"] as $key=>$link): ?>
+            <li>
+                <a href=""><?= $link?></a>
+            </li>
+        <?php endforeach ?>
+    </ul>
+</header>

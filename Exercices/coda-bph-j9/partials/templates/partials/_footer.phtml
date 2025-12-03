@@ -1,0 +1,11 @@
+<footer>
+    <img src="<?= $data["logo"]?>">
+    <h2>Copyright - Les dieux du code</h2>
+    <ul>
+        <?php foreach($data["links"] as $key=>$link): ?>
+            <li>
+                <a href><?= $link?></a>
+            </li>
+        <?php endforeach ?>
+    </ul>
+</footer>

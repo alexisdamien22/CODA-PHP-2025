@@ -1,0 +1,12 @@
+<section class="tarifs">
+    <ul>
+        <?php foreach($data["prices"] as $key=>$tarif): ?>
+            <li>
+                <h3><?= $tarif["name"]?></h3>
+                <h2><?= $tarif["price"]?></h2>
+                <p><?= $tarif["duration"]?></p>
+            </li>
+        <?php endforeach ?>
+    </ul>
+    <img src="<?= $data["logo"]?>">
+</section>

@@ -1,0 +1,12 @@
+<section class="services">
+    <ul>
+        <?php foreach($data["services"] as $key=>$service): ?>
+            <li>
+                <img src="<?= $service["image"]?>">
+                <h3><?= $service["name"]?></h3>
+                <h4><?= $service["tagline"]?></h4>
+                <p><?= $service["description"]?></p>
+            </li>
+        <?php endforeach ?>
+    </ul>
+</section>
