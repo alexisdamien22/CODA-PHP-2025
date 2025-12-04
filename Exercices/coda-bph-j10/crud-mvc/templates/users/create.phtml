@@ -1,0 +1,21 @@
+<main class="container py-5">
+    <a href="index.php?route=list">Retour à la liste</a>
+    <h1 class="my-5">Créer un utilisateur</h1>
+    <form method="post" action="index.php?route=check_create_user">
+        <fieldset class="form-group mb-2">
+            <label class="form-label" for="name">Prénom</label>
+            <input class="form-control" type="text" name="firstName" id="firstName" placeholder="Prénom" required>
+        </fieldset>
+        <fieldset class="form-group mb-2">
+            <label class="form-label" for="name">Nom</label>
+            <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Nom" required>
+        </fieldset>
+        <fieldset class="form-group mb-2">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" placeholder="email@example.com" required>
+        </fieldset>
+        <fieldset class="form-group">
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+        </fieldset>
+    </form>
+</main>

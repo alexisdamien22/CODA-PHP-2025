@@ -1,0 +1,25 @@
+<main class="container py-5">
+    <a href="index.php?route=list">Retour à la liste</a>
+    <h1 class="my-5">Modifier un utilisateur</h1>
+    <form method="post" action="index.php?route=check_update_user&user_id=<?= $data[0]->getId() ?>">
+        <fieldset class="form-group mb-2">
+            <label class="form-label" for="user-id">Id de l'utilisateur</label>
+            <input class="form-control" type="text" name="user_id" id="user_id" value="<?= $data[0]->getId() ?>" readonly disabled required>
+        </fieldset>
+        <fieldset class="form-group mb-2">
+            <label class="form-label" for="name">Prénom de l'utilisateur</label>
+            <input class="form-control" type="text" name="firstName" id="firstName" value="<?= $data[0]->getFirstName() ?>" required>
+        </fieldset>
+        <fieldset class="form-group mb-2">
+            <label class="form-label" for="name">Nom de l'utilisateur</label>
+            <input class="form-control" type="text" name="lastName" id="lastName" value="<?= $data[0]->getLastName() ?>" required>
+        </fieldset>
+        <fieldset class="form-group mb-2">
+            <label class="form-label" for="email">Email de l'utilisateur</label>
+            <input class="form-control" type="email" name="email" id="email" value="<?= $data[0]->getEmail() ?>" required>
+        </fieldset>
+        <fieldset class="form-group">
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+        </fieldset>
+    </form>
+</main>

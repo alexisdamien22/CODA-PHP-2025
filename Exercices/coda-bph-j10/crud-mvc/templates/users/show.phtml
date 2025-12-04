@@ -1,0 +1,22 @@
+<main class="container py-5">
+    <a href="index.php?route=list">Retour à la liste</a>
+    <h1 class="my-5">Liste des utilisateurs</h1>
+    <table class="table table-striped mt-5">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?= $data[0]->getId() ?></td>
+                <td><?= $data[0]->getFirstName() ?></td>
+                <td><?= $data[0]->getLastName() ?></td>
+                <td><?= $data[0]->getEmail() ?></td>
+            </tr>
+        </tbody>
+    </table>
+</main>
