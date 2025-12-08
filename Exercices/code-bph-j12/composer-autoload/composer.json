@@ -1,0 +1,14 @@
+{
+    "name": "alexis/composer-autoload",
+    "require": {
+
+    },
+  "autoload": {
+    "classmap": [
+      "controllers/",
+      "managers/",
+      "models/",
+      "services/"
+    ]
+  }
+}
