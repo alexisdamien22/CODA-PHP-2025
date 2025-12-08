@@ -1,0 +1,23 @@
+<section id="top-teams">
+
+    <h2>LA TEAM À LA UNE</h2>
+
+    <div class="top_team">
+        <img src="{{ data.team.getLogo() }}" alt="{{ data.team.getAlt() }}">
+        <div id="team_comp">
+            <h3>{{ data.team.getName() }}</h3>
+            <p>Les players</p>
+
+            <ul class="players">
+                {% for kay, player in data.players %}
+                    <li class="player_in_team">
+                        <img src="{{ player.getPortrait() }}"alt="{{ player.getAlt() }}">
+                        <h4>{{ player.getNickame() }}</h4>
+                    </li>
+                {% endfor %}
+            </ul> 
+        </div>
+    </div>
+
+
+</section>

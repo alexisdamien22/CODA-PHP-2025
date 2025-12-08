@@ -1,0 +1,15 @@
+<section id="top-players">
+
+    <h2>LES PLAYERS À LA UNE</h2>
+
+    <ul class="top_players">
+        {% for key, player in data.highlightedPlayers %}
+            <li class="top_player">
+                <img src="{{ player.getPortrait() }}" alt="{{ player.getAlt() }}">
+                <h4>{{ player.getNickname() }}</h4>
+                <p>{{ player.getTeam() }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+</section>

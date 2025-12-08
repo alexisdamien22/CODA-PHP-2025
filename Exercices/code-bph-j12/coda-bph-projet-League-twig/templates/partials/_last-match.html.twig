@@ -1,0 +1,28 @@
+<section id="last-match">
+
+    <h2>LE DERNIER MATCH</h2>
+
+    
+    <div>
+                <h3>{{ data.lastGame.game.getName() | upper }}</h3>
+                <p>{{ data.lastGame.game.getDate() }}</p>
+        <ul>
+             
+            {% if data.lastGame.team_1.getId() == data.lastGame.winner.getId() %}
+                <li class="last_match_winner">
+                    <img src="{{ data.lastGame.team_1.getLogo() }}" alt="{{ data.lastGame.team_1.getAlt() }}">
+                </li>
+                <li class="last_match_loser">
+                    <img src="{{ data.lastGame.team_2.getLogo() }}" alt="{{ data.lastGame.team_2.getAlt() }}">
+                </li>
+            {% else %}
+                <li class="last_match_loser">
+                    <img src="{{ data.lastGame.team_1.getLogo() }}" alt="{{ data.lastGame.team_1.getAlt() }}">
+                </li>
+                <li class="last_match_winner">
+                    <img src="{{ data.lastGame.team_2.getLogo() }}" alt="{{ data.lastGame.team_2.getAlt() }}">
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</section>

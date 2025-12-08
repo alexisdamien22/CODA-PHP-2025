@@ -1,0 +1,16 @@
+<section id="league-players">
+
+    <h1>LES PLAYERS DE LA LEAGUE</h1>
+
+    <ul id="all_players">
+        {% for key, player in data.0 %}
+        <li class="player">
+            <img src="{{ player.getPortrait() }}" alt="{{ player.getAlt() }}">
+            <h2>{{ player.getNickname() | upper }}</h2>
+            <p>{{ player.getTeam() }}</p>
+            <a href="index.php?route=player&id={{ player.getId() }}">DÉCOUVREZ {{ player.getNickname() | upper }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</section>
