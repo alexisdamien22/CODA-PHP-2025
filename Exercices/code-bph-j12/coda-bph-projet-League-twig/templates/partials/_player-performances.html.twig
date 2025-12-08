@@ -1,0 +1,35 @@
+<section id="player-performances">
+
+    <h1>Ses performances</h1>
+
+    <table class="">
+        <thead>
+            <tr>
+                <th>TEAM ADVERSE</th>
+                <th>POINTS</th>
+                <th>ASSISTS</th>
+                <th>VICTOIRE ?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data["performances"]["perfs"] as $i => $performance): ?>
+                <tr>
+                    <?php if($data["performances"]["team_1"][$i]->getId() === $data["player"]->getIdTeam()): ?>
+                        <td class="enemy_team"><?= $data["performances"]["team_2"][$i]->getName() ?></td>
+                    <?php endif ?>
+                    <?php if($data["performances"]["team_2"][$i]->getId() === $data["player"]->getIdTeam()): ?>
+                        <td class="enemy_team"><?= $data["performances"]["team_1"][$i]->getName() ?></td>
+                    <?php endif ?>
+                    <td><?= $performance->getPoints() ?></td>
+                    <td><?= $performance->getAssists() ?></td>
+                    <?php if($data["player"]->getIdTeam() === $data["performances"]["winner"][$i]->getId()): ?>
+                        <td class="player-performances-yes">Oui</td>
+                    <?php endif ?>
+                    <?php if($data["player"]->getIdTeam() != $data["performances"]["winner"][$i]->getId()): ?>
+                        <td class="player-performances-no">Non</td>
+                    <?php endif ?>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

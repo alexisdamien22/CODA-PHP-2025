@@ -1,0 +1,17 @@
+<section id="players-teammates">
+
+    <h2>SA TEAM</h2>
+
+    <ul id="teammates">
+        <?php foreach($data["players"] as $key=>$player): ?>
+            <?php if($data["player"]->getId() != $data["players"][$key]->getId()): ?>
+                <li class="teammate">
+                    <img src="<?= $player->getPortrait() ?>" alt="<?= $player->getAlt() ?>">
+                    <h3><?= strtoupper($player->getNickname()) ?></h3>
+                    <a href="index.php?route=player&id=<?=$player->getId()?>">DÉCOUVREZ <?= strtoupper($player->getNickname()) ?></a>
+                </li>
+            <?php endif ?>
+        <?php endforeach ?>
+    </ul>
+
+</section>
