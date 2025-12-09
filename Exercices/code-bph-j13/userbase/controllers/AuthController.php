@@ -22,7 +22,6 @@ class AuthController extends AbstractController
                     if(password_verify($user->getPassword(), $_POST["password"]))
                     { 
                         $isEmailUsed === true;
-                        session_start();
                         $_SESSION["firstName"] = $user->getFirstName();
                         $_SESSION["lastName"] = $user->getLastName();
                         $_SESSION["email"] = $user->getEmail();
