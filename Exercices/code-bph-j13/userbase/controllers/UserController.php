@@ -10,7 +10,14 @@ class UserController extends AbstractController
         && isset($_SESSION["role"])
         && isset($_SESSION["id"]))
         {
-            $this->render('member/profile.html.twig', []);
+            if($_SESSION["role"] === "ADMIN")
+            {
+                $this->redirect('index.php?route=list');
+            }
+            else
+            {
+                $this->render('member/profile.html.twig', []);
+            }
         }
         else
         {
@@ -78,7 +85,7 @@ class UserController extends AbstractController
         }
     }
 
-    public function update() : void
+    public function update(int $id) : void
     {
         if(isset($_SESSION["firstName"])
         && isset($_SESSION["lastName"])
@@ -88,7 +95,16 @@ class UserController extends AbstractController
         {
             if($_SESSION["role"] === "ADMIN")
             {
-                $this->render('admin/users/update.html.twig', []);
+                $ctrl = new UserManager;
+                $user = $ctrl->findById($id);
+                $data = [
+                    "firstName" => $user->getFirstName(),
+                    "lastName"  => $user->getLastName(),
+                    "email"     => $user->getEmail(),
+                    "role"      => $user->getRole(),
+                    "id"        => $user->getId()
+                ];
+                $this->render('admin/users/update.html.twig', ["data"=>$data]);
             }
         }
         else

@@ -9,8 +9,8 @@ class AuthController extends AbstractController
 
     public function login() : void
     {
-        if(isset($_POST["email"])
-        && isset($_POST["password"]))
+        if(isset($_POST["email"]) && !empty($_POST["email"])
+        && isset($_POST["password"]) && !empty($_POST["password"]))
         {
             $userMan = new UserManager;
             $user = $userMan->findByEmail($_POST["email"]);
@@ -37,8 +37,8 @@ class AuthController extends AbstractController
                 $this->render('auth/login.html.twig', ["data"=>$data]);
             }
         }
-        elseif(isset($_POST["email"])
-        XOR isset($_POST["password"]))
+        elseif(isset($_POST["email"]) && !empty($_POST["email"])
+        || isset($_POST["password"]) && !empty($_POST["password"]))
         {
             $data=["Remplissez tous les champs"];
             $this->render('auth/login.html.twig', ["data"=>$data]);
@@ -57,11 +57,11 @@ class AuthController extends AbstractController
 
     public function register() : void
     {
-        if(isset($_POST["firstName"]) 
-        && isset($_POST["lastName"])
-        && isset($_POST["email"])
-        && isset($_POST["password"])
-        && isset($_POST["confirmPassword"]))
+        if(isset($_POST["firstName"]) && !empty($_POST["firstName"])
+        && isset($_POST["lastName"]) && !empty($_POST["lastName"])
+        && isset($_POST["email"]) && !empty($_POST["email"])
+        && isset($_POST["password"]) && !empty($_POST["password"])
+        && isset($_POST["confirmPassword"]) && !empty($_POST["confirmPassword"]))
         {
             $isEmailUsed = false;
             $userMan = new UserManager;
@@ -94,6 +94,15 @@ class AuthController extends AbstractController
                 $data = ["Les mots de passe de correspondent pas..."];
                 $this->render('auth/register.html.twig', ["data"=>$data]);
             }
+        }
+        elseif(isset($_POST["firstName"]) && !empty($_POST["firstName"])
+        || isset($_POST["lastName"]) && !empty($_POST["lastName"])
+        || isset($_POST["email"]) && !empty($_POST["email"])
+        || isset($_POST["password"]) && !empty($_POST["password"])
+        || isset($_POST["confirmPassword"]) && !empty($_POST["confirmPassword"]))
+        {
+            $data = ["Veuillez remplir touts les champs"];
+            $this->render('auth/register.html.twig', ["data"=>$data]);
         }
         else
         {

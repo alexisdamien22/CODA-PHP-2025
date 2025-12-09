@@ -29,10 +29,10 @@ class Router
                 $this->uc->create();
             }
             else if($_GET['route'] === 'update') {
-                $this->uc->update();
+                $this->uc->update($_GET['id']);
             }
             else if($_GET['route'] === 'delete') {
-                $this->uc->delete();
+                $this->uc->delete($_GET['id']);
             }
             else if($_GET['route'] === 'list') {
                 $this->uc->list();
