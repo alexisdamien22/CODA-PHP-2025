@@ -9,6 +9,7 @@ class AuthController extends AbstractController
 
     public function login() : void
     {
+        $isEmailUsed = false;
         if(isset($_POST["email"])
         && isset($_POST["password"]))
         {
@@ -19,7 +20,8 @@ class AuthController extends AbstractController
                 if($user->getEmail() === $_POST["email"])
                 {   
                     if(password_verify($user->getPassword(), $_POST["password"]))
-                    {   
+                    { 
+                        $isEmailUsed === true;
                         session_start();
                         $_SESSION["firstName"] = $user->getFirstName();
                         $_SESSION["lastName"] = $user->getLastName();
