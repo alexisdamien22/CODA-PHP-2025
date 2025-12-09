@@ -9,33 +9,29 @@ class AuthController extends AbstractController
 
     public function login() : void
     {
-        $isEmailUsed = false;
         if(isset($_POST["email"])
         && isset($_POST["password"]))
         {
             $userMan = new UserManager;
-            $users = $userMan->findAll();
-            foreach($users as $user)
+            $user = $userMan->findByEmail($_POST["email"]);
+            if($user != null)
             {
-                if($user->getEmail() === $_POST["email"])
-                {   
-                    if(password_verify($user->getPassword(), $_POST["password"]))
-                    { 
-                        $isEmailUsed === true;
-                        $_SESSION["firstName"] = $user->getFirstName();
-                        $_SESSION["lastName"] = $user->getLastName();
-                        $_SESSION["email"] = $user->getEmail();
-                        $_SESSION["role"] = $user->getRole();
-                        $_SESSION["id"] = $user->getId();
-                    }
-                    else
-                    {
-                        $data=["Mot de passe invalide"];
-                        $this->render('auth/login.html.twig', ["data"=>$data]);
-                    }
+                if(password_verify($_POST["password"], $user->getPassword()))
+                {
+                    $_SESSION["firstName"] = $user->getFirstName();
+                    $_SESSION["lastName"] = $user->getLastName();
+                    $_SESSION["email"] = $user->getEmail();
+                    $_SESSION["role"] = $user->getRole();
+                    $_SESSION["id"] = $user->getId();
+                    $this->redirect('index.php?route=profile');
+                }
+                else
+                {
+                    $data=["Mot de passe invalide"];
+                    $this->render('auth/login.html.twig', ["data"=>$data]);
                 }
             }
-            if($isEmailUsed === false)
+            else
             {
                 $data=["Il n'existe pas d'utilisateur avec cette adresse mail"];
                 $this->render('auth/login.html.twig', ["data"=>$data]);

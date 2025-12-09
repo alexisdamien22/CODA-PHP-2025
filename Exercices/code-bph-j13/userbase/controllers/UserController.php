@@ -58,7 +58,21 @@ class UserController extends AbstractController
 
     public function delete() : void
     {
-        $this->redirect("index.php?route=list");
+        if(isset($_SESSION["firstName"])
+        && isset($_SESSION["lastName"])
+        && isset($_SESSION["email"])
+        && isset($_SESSION["role"])
+        && isset($_SESSION["id"]))
+        {
+            if($_SESSION["role"] === "ADMIN")
+            {
+                $this->redirect("index.php?route=list");
+            }
+        }
+        else
+        {
+            $this->render('auth/login.html.twig', []);
+        }
     }
 
     public function list() : void
@@ -71,7 +85,14 @@ class UserController extends AbstractController
         {
             if($_SESSION["role"] === "ADMIN")
             {
-                $this->render('admin/users/index.html.twig', []);
+                $data = [
+                    "firstName" => $_SESSION["firstName"],
+                    "lastName"  => $_SESSION["lastName"],
+                    "email"     => $_SESSION["email"],
+                    "role"      => $_SESSION["role"],
+                    "id"        => $_SESSION["id"]
+                ];
+                $this->render('admin/users/index.html.twig', ["data"=>$data]);
             }
         }
         else
