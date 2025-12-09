@@ -1,0 +1,24 @@
+<section id="match">
+        
+        <h3><?= strtoupper($data["game"]->getName()) ?></h3>
+        <p><?= $data["game"]->getDate() ?></p>
+    <ul>
+        <?php if($data["team_1"]->getId() === $data["winner"]->getId()): ?>
+            <li class="match_winner">
+                <img src="<?= $data["team_1"]->getLogo() ?>" alt="<?= $data["team_1"]->getAlt() ?>">
+            </li>
+            <li class="match_loser">
+                <img src="<?= $data["team_2"]->getLogo() ?>" alt="<?= $data["team_2"]->getAlt() ?>">
+            </li>
+        <?php endif ?>
+        <?php if($data["team_2"]->getId() === $data["winner"]->getId()): ?>
+            <li class="match_loser">
+                <img src="<?= $data["team_1"]->getLogo() ?>" alt="<?= $data["team_1"]->getAlt() ?>">
+            </li>
+            <li class="match_winner">
+                <img src="<?= $data["team_2"]->getLogo() ?>" alt="<?= $data["team_2"]->getAlt() ?>">
+            </li>
+        <?php endif ?>
+    </ul>
+
+</section>

@@ -1,0 +1,15 @@
+<section id="league-teams">
+    <h1>LES TEAMS DE LA LEAGUE</h1>
+
+    <ul id="teamlist">
+        <?php foreach($data as $key=>$team): ?>
+        <li class="league_teams">
+            <img src="<?= $team->getLogo() ?>" alt="<?= $team->getAlt() ?>">
+            <h2><?= strtoupper($team->getName()) ?></h2>
+            <p><?= $team->getDescription() ?></p>
+            <a id="" href="index.php?route=team&id=<?=$team->getId()?>">DÉCOUVREZ <?= strtoupper($team->getName()) ?></a>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+
+</section>

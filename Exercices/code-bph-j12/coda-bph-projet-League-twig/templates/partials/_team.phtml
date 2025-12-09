@@ -1,0 +1,15 @@
+<section id="team">
+
+    <h2><?= $data["team"]->getName() ?></h2>
+    
+    <ul id="team-players">
+        <?php foreach($data["players"] as $key=>$player): ?>
+            <li class="team-player">
+                <img src="<?= $player->getPortrait() ?>" alt="<?= $player->getAlt() ?>">
+                <h3><?= strtoupper($player->getNickname()) ?></h3>
+                <a href="index.php?route=player&id=<?=$player->getId()?>">DÉCOUVREZ <?= strtoupper($player->getNickname()) ?></a>
+            </li>
+        <?php endforeach ?>
+    </ul>
+
+</section>

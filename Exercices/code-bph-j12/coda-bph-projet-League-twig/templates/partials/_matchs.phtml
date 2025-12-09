@@ -1,0 +1,33 @@
+<section id="matchs">
+
+    <h1>LES MATCHS</h1>
+
+    
+    <?php foreach($data as $key=>$game): ?>
+        <div class="match_in_list">
+                <h2><?= strtoupper($game["game"]->getName()) ?></h2>
+                <p><?= $game["game"]->getDate() ?></p>
+            <ul>
+                <?php if($game["team_1"]->getId() === $game["winner"]->getId()): ?>
+                    <li class="match_winner">
+                        <img src="<?= $game["team_1"]->getLogo() ?>" alt="<?= $game["team_1"]->getAlt() ?>">
+                    </li>
+                    <li class="match_loser">
+                        <img src="<?= $game["team_2"]->getLogo() ?>" alt="<?= $game["team_2"]->getAlt() ?>">
+                    </li>
+                <?php endif ?>
+                <?php if($game["team_2"]->getId() === $game["winner"]->getId()): ?>
+                    <li class="match_loser">
+                        <img src="<?= $game["team_1"]->getLogo() ?>" alt="<?= $game["team_1"]->getAlt() ?>">
+                    </li>
+                    <li class="match_winner">
+                        <img src="<?= $game["team_2"]->getLogo() ?>" alt="<?= $game["team_2"]->getAlt() ?>">
+                    </li>
+                <?php endif ?>
+            </ul>
+                <a href="index.php?route=match&id=<?= $game["game"]->getId()?>">DÉTAILS DU MATCH</a>
+        </div>
+    <?php endforeach; ?>
+    
+
+</section>

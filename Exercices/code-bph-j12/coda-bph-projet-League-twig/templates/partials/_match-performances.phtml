@@ -1,0 +1,25 @@
+<section id="match-performances">
+
+    <h1>Les performances</h1>
+
+    <table class="table_table-striped_mt-5">
+        <thead>
+            <tr>
+                <th>PLAYER</th>
+                <th>TEAM</th>
+                <th>POINTS</th>
+                <th>ASSISTS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data["performances"]["perfs"] as $i => $performance): ?>
+                <tr>
+                    <td class="player_in_match"><?= $data["performances"]["players"][$i]->getNickname() ?></td>
+                    <td class="team_in_match"><?= $data["performances"]["players"][$i]->getTeam() ?></td>
+                    <td><?= $performance->getPoints() ?></td>
+                    <td><?= $performance->getAssists() ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

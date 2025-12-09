@@ -12,24 +12,24 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($data["performances"]["perfs"] as $i => $performance): ?>
+            {% for i, performance in data.performances.perfs %}
                 <tr>
-                    <?php if($data["performances"]["team_1"][$i]->getId() === $data["player"]->getIdTeam()): ?>
-                        <td class="enemy_team"><?= $data["performances"]["team_2"][$i]->getName() ?></td>
-                    <?php endif ?>
-                    <?php if($data["performances"]["team_2"][$i]->getId() === $data["player"]->getIdTeam()): ?>
-                        <td class="enemy_team"><?= $data["performances"]["team_1"][$i]->getName() ?></td>
-                    <?php endif ?>
-                    <td><?= $performance->getPoints() ?></td>
-                    <td><?= $performance->getAssists() ?></td>
-                    <?php if($data["player"]->getIdTeam() === $data["performances"]["winner"][$i]->getId()): ?>
+                    {% if data.performances.team_1.i.getId() == data.player.getIdTeam() %}
+                        <td class="enemy_team">{{ data.performances.team_2.i.getName() }}</td>
+                    {% endif %}
+                    {% if data.performances.team_2.i.getId() == data.player.getIdTeam() %}
+                        <td class="enemy_team">{{ data.performances.team_1.i.getName() }}</td>
+                    {% endif %}
+                    <td>{{ performance.getPoints() }}</td>
+                    <td>{{ performance.getAssists() }}</td>
+                    {% if data.player.getIdTeam() == data.performances.winner.i.getId() %}
                         <td class="player-performances-yes">Oui</td>
-                    <?php endif ?>
-                    <?php if($data["player"]->getIdTeam() != $data["performances"]["winner"][$i]->getId()): ?>
+                    {% endif %}
+                    {% if data.player.getIdTeam() != data.performances.winner.i.getId() %}
                         <td class="player-performances-no">Non</td>
-                    <?php endif ?>
+                    {% endif %}
                 </tr>
-            <?php endforeach; ?>
+            {% endfor %}
         </tbody>
     </table>
 </section>
