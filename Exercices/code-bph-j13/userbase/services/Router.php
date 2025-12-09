@@ -38,7 +38,7 @@ class Router
                 $this->uc->list();
             }
             else if($_GET['route'] === 'show') {
-                $this->uc->show();
+                $this->uc->show($_GET['id']);
             }
             else
             {

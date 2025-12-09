@@ -28,7 +28,48 @@ class UserController extends AbstractController
         {
             if($_SESSION["role"] === "ADMIN")
             {
-                $this->render('admin/users/create.html.twig', []);
+                if(isset($_POST["firstName"]) 
+                && isset($_POST["lastName"])
+                && isset($_POST["email"])
+                && isset($_POST["password"])
+                && isset($_POST["confirmPassword"]))
+                {
+                    $isEmailUsed = false;
+                    $userMan = new UserManager;
+                    $users = $userMan->findAll();
+                    foreach($users as $user)
+                    {
+                        if($user->getEmail() === $_POST["email"])
+                        {   
+                            $isEmailUsed = true;
+                        }
+                    }
+                    if($isEmailUsed === true)
+                    {
+                        $data=["Cet email est déjà utilisé"];
+                        $this->render('admin/users/create.html.twig', ["data"=>$data]);
+                    }
+                    if($_POST["password"] === $_POST["confirmPassword"] && $isEmailUsed === false)
+                    {
+                        $hashedPassword = password_hash($_POST["password"], PASSWORD_DEFAULT);
+                        $newUser = new User(
+                            $_POST["firstName"],
+                            $_POST["lastName"],
+                            $_POST["email"],
+                            $hashedPassword);
+                        $userMan->create($newUser);
+                        $this->redirect('index.php?route=list');
+                    }
+                    elseif($isEmailUsed === false)
+                    {
+                        $data = ["Les mots de passe de correspondent pas..."];
+                        $this->render('admin/users/create.html.twig', ["data"=>$data]);
+                    }
+                }
+                else
+                {
+                    $this->render('admin/users/create.html.twig', []);
+                }
             }
         }
         else
@@ -85,13 +126,8 @@ class UserController extends AbstractController
         {
             if($_SESSION["role"] === "ADMIN")
             {
-                $data = [
-                    "firstName" => $_SESSION["firstName"],
-                    "lastName"  => $_SESSION["lastName"],
-                    "email"     => $_SESSION["email"],
-                    "role"      => $_SESSION["role"],
-                    "id"        => $_SESSION["id"]
-                ];
+                $ctrl = new UserManager;
+                $data = $ctrl->findAll();
                 $this->render('admin/users/index.html.twig', ["data"=>$data]);
             }
         }
@@ -101,7 +137,7 @@ class UserController extends AbstractController
         }
     }
 
-    public function show() : void
+    public function show(int $id) : void
     {
         if(isset($_SESSION["firstName"])
         && isset($_SESSION["lastName"])
@@ -111,7 +147,16 @@ class UserController extends AbstractController
         {
             if($_SESSION["role"] === "ADMIN")
             {
-                $this->render('admin/users/show.html.twig', []);
+                $ctrl = new UserManager;
+                $user = $ctrl->findById($id);
+                $data = [
+                    "firstName" => $user->getFirstName(),
+                    "lastName"  => $user->getLastName(),
+                    "email"     => $user->getEmail(),
+                    "role"      => $user->getRole(),
+                    "id"        => $user->getId()
+                ];
+                $this->render('admin/users/show.html.twig', ["data"=>$data]);
             }
         }
         else

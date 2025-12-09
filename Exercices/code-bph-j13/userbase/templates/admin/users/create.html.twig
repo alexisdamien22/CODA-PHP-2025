@@ -7,6 +7,9 @@
 {% block main %}
     <main class="py-5 container">
         <h1>Créer un utilisateur</h1>
+        {% if data.0 is defined %}
+            <h2 class="alert alert-danger" role="alert">{{ data.0 }}</h2>
+        {% endif %}
         <form method="post" action="index.php?route=create">
             <fieldset class="mb-3">
                 <label for="firstName" class="form-label">Prénom</label>
