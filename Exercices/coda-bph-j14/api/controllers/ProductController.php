@@ -4,31 +4,64 @@ class ProductController extends AbstractController
 {
     public function list() : void
     {
-        $manager = new ProductManager();
+        $Pmanager = new ProductManager();
+        $Rmanager = new ReviewManager();
 
-        $products = $manager->findAll();
+        $products = $Pmanager->findAll();
         $arrayProducts = [];
+        $summOfReviews = 0;
+        $amountOfReviews = 0;
 
         foreach($products as $product)
         {
-            $arrayProducts[] = $product->toArray();
+            $arrayProduct = [];
+            $arrayReviews = [];
+            $arrayProduct[] = $product->toArray();
+            $reviews = $Rmanager->findByProduct($product->getId());
+            foreach($reviews as $review)
+            {
+                $arrayReview = $review->toArray();
+                unset($arrayReview['product']);
+                $summOfReviews = $summOfReviews + $arrayReview["starNumber"];
+                $amountOfReviews++;
+                $arrayReviews[] = $arrayReview;
+            }
+            $arrayProduct[] = $arrayReviews;
+            $arrayProducts[] = $arrayProduct;
         }
 
         $this->render([
             "code" => 200,
-            "products" => $arrayProducts
+            "products" => $arrayProducts,
+            "average"=> $summOfReviews/$amountOfReviews
         ]);
     }
 
     public function details(int $id) : void
     {
-        $manager = new ProductManager();
-
-        $product = $manager->findById($id);
+        $Pmanager = new ProductManager();
+        $Rmanager = new ReviewManager();
+        $arrayProduct = [];
+        $arrayReviews = [];
+        $summOfReviews = 0;
+        $amountOfReviews = 0;
+        $product = $Pmanager->findById($id);
+        $arrayProduct[] = $product->toArray();
+        $reviews = $Rmanager->findByProduct($id);
+        foreach($reviews as $review)
+        {
+            $arrayReview = $review->toArray();
+            unset($arrayReview['product']);
+            $summOfReviews = $summOfReviews + $arrayReview["starNumber"];
+            $amountOfReviews++;
+            $arrayReviews[] = $arrayReview;
+        }
+        $arrayProduct[] = $arrayReviews;
 
         $this->render([
             "code" => 200,
-            "product" => $product->toArray()
+            "product" => $arrayProduct,
+            "average"=> $summOfReviews/$amountOfReviews
         ]);
     }
 }
