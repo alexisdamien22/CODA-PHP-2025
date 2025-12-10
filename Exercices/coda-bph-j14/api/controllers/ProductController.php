@@ -9,13 +9,13 @@ class ProductController extends AbstractController
 
         $products = $Pmanager->findAll();
         $arrayProducts = [];
-        $summOfReviews = 0;
-        $amountOfReviews = 0;
 
         foreach($products as $product)
         {
             $arrayProduct = [];
             $arrayReviews = [];
+            $summOfReviews = 0;
+            $amountOfReviews = 0;
             $arrayProduct[] = $product->toArray();
             $reviews = $Rmanager->findByProduct($product->getId());
             foreach($reviews as $review)
@@ -28,6 +28,7 @@ class ProductController extends AbstractController
             }
             $arrayProduct[] = $arrayReviews;
             $arrayProducts[] = $arrayProduct;
+            $arrayProducts[] = $summOfReviews/$amountOfReviews;
         }
 
         $this->render([
@@ -57,11 +58,11 @@ class ProductController extends AbstractController
             $arrayReviews[] = $arrayReview;
         }
         $arrayProduct[] = $arrayReviews;
+        $arrayPeoduct[] = $summOfReviews/$amountOfReviews;
 
         $this->render([
             "code" => 200,
-            "product" => $arrayProduct,
-            "average"=> $summOfReviews/$amountOfReviews
+            "product" => $arrayProduct
         ]);
     }
 }
