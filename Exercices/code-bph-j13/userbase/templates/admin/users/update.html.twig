@@ -26,10 +26,10 @@
             </fieldset>
             <fieldset class="mb-3">
                 <label for="role" class="form-label">Rôle</label>
-                <select class="form-select" id="role" name="role" value="{{ data.role }}">
+                <select class="form-select" id="role" name="role">
                     <option selected>Choisir un rôle</option>
-                    <option value="USER">User</option>
-                    <option value="ADMIN">Admin</option>
+                    <option value="USER"{% if data.role == 'USER' %} selected {% endif %} >User</option>
+                    <option value="ADMIN" {% if data.role == 'ADMIN' %} selected {% endif %} >Admin</option>
                 </select>
             </fieldset>
             <fieldset>
